@@ -13,7 +13,5 @@
         <item name="android:windowSplashScreenBrandingImage">@drawable/textsplash</item>
     </style>
 
-
-
     <style name="Theme.BottleGame" parent="Base.Theme.BottleGame" />
 </resources>
