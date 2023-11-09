@@ -2,6 +2,7 @@ package view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         Thread.sleep(5000)
         screenSplash.setKeepOnScreenCondition{false}
 
-        //Listeners y
+        //Listeners y asignaciones
         val botonGirar: ImageButton = findViewById(R.id.botonGirar)
         val botonMusica: ToggleButton = findViewById(R.id.musica)
         val contador: TextView = findViewById(R.id.cuenta)
@@ -28,8 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         botonGirar.setOnClickListener{
             botonGirar.isEnabled=false
-            contador.visibility = View.VISIBLE
-            empezarContador(contador)
+            empezarContador(contador, botonGirar)
         }
         //Logica botón de volumen
         botonMusica.setOnClickListener{
@@ -46,7 +46,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun empezarContador(contador: TextView){
+    private fun empezarContador(contador: TextView, botonGirar: ImageButton) {
+        object : CountDownTimer(4000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                // Display the countdown in seconds in the TextView
+                contador.visibility = View.VISIBLE
+                contador.text = "${(millisUntilFinished / 1000)}"
+            }
 
+            override fun onFinish() {
+                contador.visibility = View.GONE
+                botonGirar.isEnabled = true
+                // Execute your code here when the countdown ends
+                //funcionesNecesarias()
+            }
+        }.start()
     }
 }
