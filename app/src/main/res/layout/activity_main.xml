@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/woodtexture"
 
+
     tools:context="view.MainActivity">
 
 
@@ -36,15 +37,71 @@
         app:layout_constraintVertical_bias="0.865" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="252dp"
         android:layout_height="357dp"
-        android:
+        android:rotation="0"
         android:src="@drawable/botella"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.331" />
+
+    <TextView
+        android:id="@+id/cuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:textColor="@color/orange"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05">
+
+        <Button
+            android:id="@+id/puntuar"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            app:icon="@drawable/star_fill0_wght400_grad0_opsz24" />
+
+        <Button
+            android:id="@+id/musica"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            app:icon="@drawable/volume_up_fill0_wght400_grad0_opsz24" />
+
+        <Button
+            android:id="@+id/instrucciones"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            app:icon="@drawable/sports_esports_fill0_wght400_grad0_opsz24" />
+
+        <Button
+            android:id="@+id/retos"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            app:icon="@drawable/add_circle_fill1_wght400_grad0_opsz24" />
+
+        <Button
+            android:id="@+id/compartir"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            app:icon="@drawable/share_fill0_wght400_grad0_opsz24" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
