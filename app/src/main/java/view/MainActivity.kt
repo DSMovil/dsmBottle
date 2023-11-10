@@ -9,11 +9,9 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.bottlegame.R
-import pl.droidsonroids.gif.GifImageButton
 
 
 class MainActivity : AppCompatActivity() {
