@@ -9,22 +9,6 @@
 
     tools:context="view.MainActivity">
 
-
-    <TextView
-        android:layout_width="114dp"
-        android:layout_height="83dp"
-        android:text="test"
-        android:id="@+id/testboton"
-        android:textColor="@color/orange"
-        android:textSize="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702"
-        android:visibility="invisible"/>
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -38,18 +22,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
 
-    <ImageButton
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/botonGirar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.905"
+        app:lottie_autoPlay="true"
+        app:lottie_colorFilter="@color/orange"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animacion" />
 
     <ImageView
         android:id="@+id/imageView"

@@ -7,11 +7,13 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.bottlegame.R
+import pl.droidsonroids.gif.GifImageButton
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         screenSplash.setKeepOnScreenCondition{false}
 
         //Listeners y asignaciones
-        val botonGirar: ImageButton = findViewById(R.id.botonGirar)
+        val botonGirar: ImageView = findViewById(R.id.botonGirar)
         val botonMusica: ToggleButton = findViewById(R.id.musica)
         val contador: TextView = findViewById(R.id.cuenta)
         val musicaFondo = MediaPlayer.create(this, R.raw.portal_radio_loop)
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun empezarContador(contador: TextView, botonGirar: ImageButton) {
+    private fun empezarContador(contador: TextView, botonGirar: ImageView) {
         object : CountDownTimer(4000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // Display the countdown in seconds in the TextView
