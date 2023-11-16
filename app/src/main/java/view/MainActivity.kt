@@ -5,9 +5,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,6 +13,14 @@ import android.widget.ToggleButton
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.bottlegame.R
 import android.content.Intent
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+
+
+
 
 
 
@@ -32,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         val botonMusica: ToggleButton = findViewById(R.id.musica)
         val contador: TextView = findViewById(R.id.cuenta)
         val botonInstrucciones: ImageButton = findViewById(R.id.instrucciones)
+        val botonAgregarreto: ImageButton = findViewById(R.id.retos)
         val musicaFondo = MediaPlayer.create(this, R.raw.portal_radio_loop)
         musicaFondo.start()
 
@@ -47,6 +54,10 @@ class MainActivity : AppCompatActivity() {
 
             // Iniciar la actividad de instrucciones
             startActivity(intent)
+        }
+
+        botonAgregarreto.setOnClickListener{
+            mostrarDialogoAgregarReto()
         }
 
         //Logica botón de volumen para cambiar icono
@@ -98,6 +109,46 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun mostrarDialogoAgregarReto() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_agregar_reto, null)
+        builder.setView(dialogView)
+
+        val dialog = builder.create()
+
+        val editTextReto = dialogView.findViewById<EditText>(R.id.editTextReto)
+        val botonCancelar = dialogView.findViewById<Button>(R.id.botonCancelar)
+        val botonGuardar = dialogView.findViewById<Button>(R.id.botonGuardar)
+
+        // Configurar la lógica de botones y cuadro de texto aquí
+
+        botonCancelar.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        botonGuardar.setOnClickListener {
+            // Guardar el reto en la base de datos local (SQLite)
+            // Lógica adicional de guardado
+            dialog.dismiss()
+        }
+
+        val textWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Habilitar o deshabilitar el botón de guardar según si hay texto o no
+                botonGuardar.isEnabled = s?.isNotEmpty() == true
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        }
+
+        editTextReto.addTextChangedListener(textWatcher)
+
+        // Mostrar el cuadro de diálogo
+        dialog.show()
+    }
 
 }
 
