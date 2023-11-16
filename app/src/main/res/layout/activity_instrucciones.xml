@@ -76,7 +76,9 @@
         android:layout_marginStart="358dp"
         android:layout_marginTop="16dp"
         android:contentDescription="Botón de Flecha Atrás"
+        android:background="@drawable/button_touch_feedback"
         android:src="@drawable/back" />
+
 
 </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
