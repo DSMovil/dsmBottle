@@ -41,6 +41,13 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/animacion" />
 
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="110dp"
+        android:id="@+id/btnRetos"
+        android:text="Salto"
+        tools:layout_editor_absoluteY="621dp" />
+
     <!--Imagen de la botella -->
     <ImageView
         android:id="@+id/imageView"
@@ -74,6 +81,7 @@
     <!--Texto cuenta regresiva -->
     <TextView
         android:id="@+id/cuenta"
+        andro
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3"

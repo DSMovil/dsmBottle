@@ -9,9 +9,30 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.bottlegame.R
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+
+
 
 data class Retos(val Reto: String)
+
+class RetosViewModel : ViewModel () {
+    val retos = mutableListOf<Retos>(
+        Retos(Reto = "Bailar Salsa"),
+        Retos(Reto = "Jugar Tenis"),
+        Retos(Reto = "Comprar Casa")
+    )
+    init {
+        // Carga DB
+    }
+
+    fun seleccionarReto(): Retos {
+        return this.retos.random()
+    }
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,16 +43,18 @@ class MainActivity : AppCompatActivity() {
     fun seleccionarReto(data: MutableList<Retos>): Retos {
         return data.random()
     }
-
+    private lateinit var retosViewModel: RetosViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+// Cargar View Model
+        ViewModelProvider(this).get(RetosViewModel::class.java)
+
         Thread.sleep(5000)
         screenSplash.setKeepOnScreenCondition{false}
 
-        val datos = cargarDatosDB()
 
         //Listeners y asignaciones
         val botonGirar: ImageView = findViewById(R.id.botonGirar)
@@ -44,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         //Listener boton de girar
         botonGirar.setOnClickListener{
             botonGirar.isEnabled=false
-            empezarContador(contador,retosDPantalla, botonGirar) { seleccionarReto(datos) }
+            empezarContador(contador,retosDPantalla, botonGirar) { retosViewModel.seleccionarReto() }
         }
         //Logica botón de volumen para cambiar icono
         botonMusica.setOnClickListener{
