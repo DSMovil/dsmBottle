@@ -41,13 +41,6 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/animacion" />
 
-    <Button
-        android:layout_width="95dp"
-        android:layout_height="110dp"
-        android:id="@+id/btnRetos"
-        android:text="Salto"
-        tools:layout_editor_absoluteY="621dp"
-        tools:ignore="MissingConstraints" />
 
     <!--Imagen de la botella -->
     <ImageView
