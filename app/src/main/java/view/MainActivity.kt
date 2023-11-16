@@ -1,5 +1,6 @@
 package view
 
+import android.content.Context
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,18 +16,38 @@ import com.example.bottlegame.R
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
+class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NOMBRE, null, DB_VERSION) {
+    companion object {
+        val DB_VERSION =1
+        val DB_NOMBRE = "RETOS_DB"
+    }
 
+    override fun onCreate(db: SQLiteDatabase?) {
+       db?.execSQL("CREATE TABLE IF NOT EXISTS reto_tabla (\n" +
+               "  reto_id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+               "  reto_texto TEXT NOT NULL\n" +
+               ");")
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+       // Nada por ahora.
+    }
+}
 
 data class Retos(val Reto: String)
 
-class RetosViewModel : ViewModel () {
+class RetosViewModel() : ViewModel () {
+    lateinit var db: SQLiteDatabase
     val retos = mutableListOf<Retos>(
         Retos(Reto = "Bailar Salsa"),
         Retos(Reto = "Jugar Tenis"),
-        Retos(Reto = "Comprar Casa")
     )
     init {
-        // Carga DB
+        // val dbHelper = DBHelper(context)
+    }
+
+    fun iniciarContext(context: Context) {
+        db = DBHelper(context).writableDatabase
     }
 
     fun seleccionarReto(): Retos {
@@ -50,7 +71,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 // Cargar View Model
-        ViewModelProvider(this).get(RetosViewModel::class.java)
+        retosViewModel = ViewModelProvider(this)[RetosViewModel::class.java]
+        retosViewModel.iniciarContext(this)
+
 
         Thread.sleep(5000)
         screenSplash.setKeepOnScreenCondition{false}

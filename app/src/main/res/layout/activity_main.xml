@@ -46,7 +46,8 @@
         android:layout_height="110dp"
         android:id="@+id/btnRetos"
         android:text="Salto"
-        tools:layout_editor_absoluteY="621dp" />
+        tools:layout_editor_absoluteY="621dp"
+        tools:ignore="MissingConstraints" />
 
     <!--Imagen de la botella -->
     <ImageView
@@ -81,7 +82,6 @@
     <!--Texto cuenta regresiva -->
     <TextView
         android:id="@+id/cuenta"
-        andro
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3"
