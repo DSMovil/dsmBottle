@@ -9,7 +9,6 @@
 
     tools:context="view.MainActivity">
 
-    <!-- Texto de abajo -->
     <TextView
         android:id="@+id/textoPresioname"
         android:layout_width="wrap_content"
@@ -23,7 +22,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.947" />
 
+    <!-- Texto de abajo -->
+
     <!-- Boton naranja de girar-->
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/botonGirar"
         android:layout_width="160dp"
@@ -52,6 +54,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.331" />
+    <!--Todo: Decora -->
+    <TextView
+        android:id="@+id/textoReto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reto Escogido."
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.181" />
+
 
     <!--Texto cuenta regresiva -->
     <TextView
@@ -61,12 +79,12 @@
         android:text="3"
         android:textColor="@color/orange"
         android:textSize="60dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--Toolbar base -->
     <ImageView
