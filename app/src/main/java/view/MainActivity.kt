@@ -1,5 +1,6 @@
 package view
 
+import android.content.ContentValues
 import android.content.Context
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.bottlegame.R
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Button
 
 class DBHelper(context: Context): SQLiteOpenHelper(context, DB_NOMBRE, null, DB_VERSION) {
     companion object {
@@ -48,6 +50,21 @@ class RetosViewModel() : ViewModel () {
 
     fun iniciarContext(context: Context) {
         db = DBHelper(context).writableDatabase
+        println("UNIVALLE: $db")
+        db.insert("reto_tabla",null, ContentValues().apply { put("reto_texto","BASE DE DATOS FUNCIONA") })
+        db.query("reto_tabla", arrayOf("reto_texto"), null,null,null,null,null).apply {
+            this.use {
+                while (it.moveToNext()) {
+                    val reto_cursor = it.getColumnIndex("reto_texto")
+                    val reto = it.getString(reto_cursor)
+                    retos.add(Retos(reto))
+                }
+            }
+        }
+    }
+
+    fun cargaPrueba() {
+        retos.add(Retos("Muy tarde"))
     }
 
     fun seleccionarReto(): Retos {
@@ -86,6 +103,11 @@ class MainActivity : AppCompatActivity() {
         val retosDPantalla : TextView = findViewById(R.id.textoReto)
         val musicaFondo = MediaPlayer.create(this, R.raw.portal_radio_loop)
         musicaFondo.start()
+
+        val btnPrueba : Button = findViewById(R.id.btnRetos)
+        btnPrueba.setOnClickListener {
+            retosViewModel.cargaPrueba()
+        }
 
         //Listener boton de girar
         botonGirar.setOnClickListener{
