@@ -33,10 +33,6 @@ class MainActivity : AppCompatActivity() {
         retosViewModel.iniciarContext(this)
 
 
-
-
-
-
         setContentView(R.layout.activity_main)
 
         Thread.sleep(5000)
