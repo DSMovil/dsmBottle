@@ -17,10 +17,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-
-
-
+import android.net.Uri
 
 
 
@@ -40,7 +39,19 @@ class MainActivity : AppCompatActivity() {
         val botonInstrucciones: ImageButton = findViewById(R.id.instrucciones)
         val botonAgregarreto: ImageButton = findViewById(R.id.retos)
         val musicaFondo = MediaPlayer.create(this, R.raw.portal_radio_loop)
+        val botonPuntuar: ImageButton = findViewById(R.id.puntuar)
+        val botonCompartir: ImageButton = findViewById(R.id.compartir)
         musicaFondo.start()
+
+        // Listener para el botón de puntuar
+        botonPuntuar.setOnClickListener {
+            abrirPaginaPlayStoreNequi()
+        }
+
+        // Listener para el botón de compartir
+        botonCompartir.setOnClickListener {
+            compartirTexto()
+        }
 
         //Listener boton de girar
         botonGirar.setOnClickListener{
@@ -109,6 +120,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Función para abrir la página de Play Store para calificar el juego
+    private fun abrirPaginaPlayStoreNequi() {
+        val packageName = "com.nequi.MobileApp"
+        val marketUrl = "market://details?id=$packageName"
+        val webUrl = "https://play.google.com/store/apps/details?id=$packageName"
+
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(marketUrl)))
+        } catch (e: android.content.ActivityNotFoundException) {
+            // Si la aplicación de Play Store no está instalada, abrir en el navegador web
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(webUrl)))
+        }
+    }
+
+
+    // Función para compartir un texto predeterminado por otras aplicaciones
+    private fun compartirTexto() {
+        val textoCompartir = "App pico botella - Solo los valientes lo juegan !!\nDescarga la app: https://play.google.com/store/apps/details?id=com.nequi.MobileApp&hl=es_419&gl=es"
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, textoCompartir)
+
+        try {
+            startActivity(Intent.createChooser(intent, "Compartir usando"))
+        } catch (e: Exception) {
+            Toast.makeText(this, "No se pudo abrir el selector de aplicaciones.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun mostrarDialogoAgregarReto() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
@@ -146,11 +186,12 @@ class MainActivity : AppCompatActivity() {
 
         editTextReto.addTextChangedListener(textWatcher)
 
+
+
         // Mostrar el cuadro de diálogo
         dialog.show()
     }
 
 }
-
 
 
