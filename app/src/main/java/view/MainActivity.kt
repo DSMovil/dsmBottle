@@ -22,17 +22,22 @@ import androidx.appcompat.app.AlertDialog
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 
-
+// Actividad principal que representa la pantalla principal del juego
 class MainActivity : AppCompatActivity() {
+    // Instancia del ViewModel asociado a esta actividad
     private lateinit var retosViewModel: RetosViewModel
+    // Método llamado al crear la actividad
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Instala la pantalla de presentación (splash screen)
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
 
+        // Inicializa el ViewModel utilizando el ViewModelProvider
         retosViewModel = ViewModelProvider(this)[RetosViewModel::class.java]
+        // Inicia el contexto y carga los retos desde la base de datos
         retosViewModel.iniciarContext(this)
 
-
+        // Establece el diseño de la actividad desde el archivo XML 'activity_main'
         setContentView(R.layout.activity_main)
 
         Thread.sleep(5000)
