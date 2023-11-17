@@ -35,7 +35,9 @@ class RetosViewModel() : ViewModel() {
             }
         }
     }
-//Metodos
+                                                                //----------Metodos-------------
+
+
 // Método para agregar un nuevo reto a la base de datos y a la lista retos
     fun agregarReto(input: String) {
         db.insert("reto_tabla",null, ContentValues().apply { put("reto_texto", input) }).apply {
