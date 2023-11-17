@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         // Listener para el botón de puntuar
         botonPuntuar.setOnClickListener {
-            abrirPaginaPlayStoreNequi()
+            abrirPaginaPlayStore()
         }
 
         // Listener para el botón de compartir
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Función para abrir la página de Play Store para calificar el juego
-    private fun abrirPaginaPlayStoreNequi() {
+    private fun abrirPaginaPlayStore() {
         val packageName = "com.nequi.MobileApp"
         val marketUrl = "market://details?id=$packageName"
         val webUrl = "https://play.google.com/store/apps/details?id=$packageName"
