@@ -31,7 +31,7 @@ class RetosViewModel() : ViewModel() {
             }
         }
     }
-
+//Metodos
     fun agregarReto(input: String) {
         db.insert("reto_tabla",null, ContentValues().apply { put("reto_texto", input) }).apply {
             retos.add(Retos(input, this))
