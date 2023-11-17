@@ -9,75 +9,114 @@
 
     tools:context="view.InstruccionesActivity">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#333333">
 
     <!-- Toolbar personalizada -->
+
+    <!-- Contenido de la ventana de instrucciones -->
+
+    <!-- Agregar el botón de flecha atrás en la barra de herramientas -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarInstrucciones"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#444444"
         android:title="Reglas del Juego"
-        android:titleTextColor="#FFFFFF"/>
-
-    <!-- Contenido de la ventana de instrucciones -->
-    <TextView
-        android:id="@+id/tituloComoSeJuega"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="¿Cómo se juega?"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_below="@id/toolbarInstrucciones"
-        android:layout_marginTop="16dp"/>
+        android:titleTextColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/descripcionComoSeJuega"
-        android:layout_width="match_parent"
+        android:layout_width="397dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tituloComoSeJuega"
+        android:layout_marginTop="7dp"
         android:text="Los jugadores forman un círculo y en el centro colocan el dispositivo móvil, luego tocan el botón parpadeante para girar la botella. El jugador que señale la botella debe cumplir el reto que lanza la app, de lo contrario abandona el juego."
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_below="@id/tituloComoSeJuega"
-        android:layout_marginTop="8dp"/>
+        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tituloQuienGana"
-        android:layout_width="match_parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¿Quién gana?"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_below="@id/descripcionComoSeJuega"
-        android:layout_marginTop="16dp"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="258dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="4dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/celebration" />
 
     <TextView
         android:id="@+id/descripcionQuienGana"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tituloQuienGana"
+        android:layout_marginTop="8dp"
         android:text="Gana el último jugador que no abandone el juego."
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_below="@id/tituloQuienGana"
-        android:layout_marginTop="8dp"/>
+        android:textSize="16sp" />
 
-    <!-- Agregar el botón de flecha atrás en la barra de herramientas -->
+    <TextView
+        android:id="@+id/tituloComoSeJuega"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarInstrucciones"
+        android:layout_marginTop="93dp"
+        android:text="¿Cómo se juega?"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tituloQuienGana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descripcionComoSeJuega"
+        android:layout_marginTop="16dp"
+        android:text="¿Quién gana?"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_alignBottom="@+id/toolbarInstrucciones"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="358dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Botón de Flecha Atrás"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="362dp"
+        android:layout_marginBottom="6dp"
         android:background="@drawable/button_touch_feedback"
+        android:contentDescription="Botón de Flecha Atrás"
         android:src="@drawable/back" />
+
+    <TextView
+        android:id="@+id/reglasdeljuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbarInstrucciones"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="13dp"
+        android:text="Reglas del juego"
+        android:textColor="@color/orange"
+        android:textSize="30dp" />
 
 
 </RelativeLayout>
