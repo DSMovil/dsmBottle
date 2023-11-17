@@ -15,7 +15,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-2dp"
         tools:layout_editor_absoluteY="1dp">
-
+S
         <TextView
             android:id="@+id/tituloDialog"
             android:layout_width="match_parent"
@@ -37,6 +37,8 @@
             android:hint="Escriba el reto"
             android:inputType="text"
             android:textColorHint="#FFFF9800" />
+
+
 
         <Button
             android:id="@+id/botonCancelar"

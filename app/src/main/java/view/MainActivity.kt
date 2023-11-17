@@ -20,13 +20,23 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import android.net.Uri
-
+import androidx.lifecycle.ViewModelProvider
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var retosViewModel: RetosViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        retosViewModel = ViewModelProvider(this)[RetosViewModel::class.java]
+        retosViewModel.iniciarContext(this)
+
+
+
+
+
+
         setContentView(R.layout.activity_main)
 
         Thread.sleep(5000)
